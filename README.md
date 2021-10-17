@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+# Digital Art Jams
+This website is intended to be used Northeastern's Digital Illustration Association (DIA) to host weekly/monthly Art Challenges. Club members can sign up for an account in order to participate in/submit their artwork for the challenges.
+This website will record all previous, current, and future challenges. For each challenge, it will collect submissions and create galleries, resulting in a collection of galleries of student-submitted artwork.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> ***DISCLAIMER:***
+> *Digital Art Jams is not officially associated with Northeastern's Digital Illustration Association or the university as a whole.*
 
-## Available Scripts
+# Website Structure
 
-In the project directory, you can run:
+Landing Page
+- Information about club and website
+- Accounts of Club Administrators
+- Preview images of last Challenge (maybe ?)
+- Current challenge (if any)
+  - Upcoming challenge (else)
 
-### `npm start`
+Challenges
+- List of past challenges
+- Current challenge (if any)
+  - Upcoming challenge (else)
+- Future challenges (maybe in calendar form)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Challenge Page
+- Display
+  - Theme
+  - Description
+  - Image (maybe ?) 
+  - Hashtags (maybe ?) 
+- If not a future challenge
+  - Gallery of submissions
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Browse Past Challenges
+- List of past challenges with preview images
+- Search by challenge name
+- Search by hashtag (maybe ?)
+- Search by participating club member
+- Search by date
+- Filter by school year
 
-### `npm test`
+Create/Edit Challenges (ADMIN ONLY)
+- Create or edit current or future challenge
+  - Theme
+  - Description
+  - Image (maybe ?) 
+  - Hashtags (maybe ?) 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Profile Page
+- Public biographical user information
+- Gallery of Submissions
+- Club member status (member, admin)
+- Users can edit their own profile
+- Admins can promote members to Admin status
