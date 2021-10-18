@@ -1,15 +1,15 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import HomePage from './components/HomePage';
 import User, { UnregisteredUser } from './model/user/user';
 
 function App() {
   let user: User = UnregisteredUser;
   return (
     <BrowserRouter>
-      <h1>
-        <i className="fas fa-pencil-alt fa-fw"></i>
-        Digital Art Jams
-      </h1>
+      <Route path={['/', '/home']}>
+        <HomePage registered={user.registered}/>
+      </Route>
     </BrowserRouter>
   );
 }

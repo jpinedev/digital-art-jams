@@ -1,13 +1,113 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*, .text-reset {
+  font-family: natom-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*
+Natom Pro Bold
+  font-family: natom-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
+Natom Pro Bold italic
+  font-family: natom-pro, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+
+Natom Pro Regular italic
+  font-family: natom-pro, sans-serif;
+  font-weight: 400;
+  font-style: italic;
+*/
+
+h1, h2, h3, h4, h5, h6, .fw-bold {
+  font-family: natom-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.fb-title {
+  font-family: natom-pro-title, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.f-title {
+  font-family: natom-pro-title, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.text-white {
+  color: #f7fffd !important;
+}
+.border-white {
+  border-color: #f7fffd !important;
+}
+.border-hover-primary:hover {
+  border-color: #4bbebe !important;
+}
+
+.text-primary {
+  color: #4bbebe !important;
+}
+.primary, .btn-primary {
+  color: #f7fffd;
+  background-color: #4bbebe;
+  border: none;
+}
+
+
+.text-secondary {
+  color: #1b3536 !important;
+}
+.secondary, .btn-secondary {
+  color: #f7fffd;
+  background-color: #1b3536;
+  border: none;
+}
+.btn-secondary:hover {
+  color: #4bbebe;
+  background-color: #1b3536;
+}
+.btn-secondary:focus, .btn-secondary:active {
+  color: #4bbebe;
+  background-color: #1b3536;
+  box-shadow: 0 0 0 0.25rem #1b353644 !important;
+}
+
+.secondary-inverse {
+  color: #1b3536;
+  background-color: #f7fffd;
+}
+
+
+.text-warning {
+  color: #d86c6c !important;
+}
+.warning, .btn-warning {
+  color: #f7fffd;
+  background-color: #d86c6c;
+  border: none;
+}
+
+/*
+--fiery-rose: #f45b69;
+--plump-purple: #52489c;
+--true-blue: #4062bb;
+--maximum-blue-green: #59c3c3;
+--platinum: #ebebeb;
+*/
+
+.profile-img-container {
+  max-width: 128px;
+  max-height: 128px;
+  overflow: hidden;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
