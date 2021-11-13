@@ -2,9 +2,9 @@ import GallerySubmission from "../image/gallerySubmission";
 import GalleryReference from "./galleryReference";
 
 interface Gallery extends GalleryReference {
-  createDate: Date;
-  submissionOpenDate: Date;
-  submissionCloseDate: Date;
+  createDate: string;
+  submissionOpenDate: string;
+  submissionCloseDate: string;
 
   submissions: GallerySubmission[];
 }

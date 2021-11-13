@@ -1,9 +1,9 @@
-import User from "../model/user/user";
+import User from "../../model/user/user";
 
 export const usersMap: {[key: string]: User} = {
   admin1: {
     registered: true,
-    joinDate: new Date(Date.parse("2021-10-17")),
+    joinDate: "2021-10-17",
     submissions: [],
     id: "admin1",
     displayName: "Admin 1",
@@ -15,7 +15,7 @@ export const usersMap: {[key: string]: User} = {
   },
   admin2: {
     registered: true,
-    joinDate: new Date(Date.parse("2021-10-18")),
+    joinDate: "2021-10-18",
     submissions: [],
     id: "admin2",
     displayName: "Admin 2",
@@ -27,7 +27,7 @@ export const usersMap: {[key: string]: User} = {
   },
   admin3: {
     registered: true,
-    joinDate: new Date(Date.parse("2021-10-19")),
+    joinDate: "2021-10-19",
     submissions: [],
     id: "admin3",
     displayName: "Admin 3",
@@ -39,7 +39,7 @@ export const usersMap: {[key: string]: User} = {
   },
   admin4: {
     registered: true,
-    joinDate: new Date(Date.parse("2021-10-20")),
+    joinDate: "2021-10-20",
     submissions: [],
     id: "admin4",
     displayName: "Admin 4",
@@ -51,7 +51,7 @@ export const usersMap: {[key: string]: User} = {
   },
   user1: {
     registered: true,
-    joinDate: new Date(Date.parse("2021-10-31")),
+    joinDate: "2021-10-31",
     submissions: [],
     id: "user1",
     displayName: "Normal User 1",
@@ -63,7 +63,7 @@ export const usersMap: {[key: string]: User} = {
   },
   user2: {
     registered: true,
-    joinDate: new Date(Date.parse("2021-10-31")),
+    joinDate: "2021-10-31",
     submissions: [],
     id: "user2",
     displayName: "Normal User 2",
@@ -75,7 +75,7 @@ export const usersMap: {[key: string]: User} = {
   },
   user3: {
     registered: true,
-    joinDate: new Date(Date.parse("2021-10-31")),
+    joinDate: "2021-10-31",
     submissions: [],
     id: "user3",
     displayName: "Normal User 3",
@@ -87,7 +87,7 @@ export const usersMap: {[key: string]: User} = {
   },
   user4: {
     registered: true,
-    joinDate: new Date(Date.parse("2021-10-31")),
+    joinDate: "2021-10-31",
     submissions: [],
     id: "user4",
     displayName: "Normal User 4",
@@ -99,7 +99,7 @@ export const usersMap: {[key: string]: User} = {
   },
   jakepine: {
     registered: true,
-    joinDate: new Date(Date.parse("2021-10-15")),
+    joinDate: "2021-10-15",
     submissions: [],
     id: "jakepine",
     displayName: "Jake Pine",
@@ -114,3 +114,5 @@ export const usersMap: {[key: string]: User} = {
 export const usersIds: string[] = Object.keys(usersMap);
 
 export const usersArray: User[] = usersIds.map((key: string) => usersMap[key]);
+
+export const adminArray: User[] = usersArray.filter(user => user.admin);

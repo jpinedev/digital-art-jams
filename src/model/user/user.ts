@@ -4,7 +4,7 @@ import UserReference from "./userReference";
 
 interface User extends UserReference, UserProfile {
   registered: boolean;
-  joinDate: Date | undefined;
+  joinDate: string;
 
   submissions: UserSubmission[];
 }
@@ -12,7 +12,7 @@ export default User;
 
 export const UnregisteredUser: User = {
   registered: false,
-  joinDate: undefined,
+  joinDate: new Date(Date.UTC(0,0)).toISOString(),
   submissions: [],
   id: "UNREGISTERED",
   displayName: "Unregistered User",

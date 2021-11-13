@@ -1,24 +1,31 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../hooks";
+import { RootState } from "../../store";
+import "./nav.css";
 
 export enum HamburgerNavOptions {
-  home = 0,
+  none = 0,
+  home,
   activeJam,
   pastJams,
   profile,
   login_register
 };
 
+const selectAuthRegistered = (state: RootState) => state.auth.registered;
+
 const HamburgerNav = ({
-  active = HamburgerNavOptions.home,
-  registered = false,
-  hide = false
+  active = HamburgerNavOptions.none,
+  hide = false,
+  displayClass = 'secondary'
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isFaded, setIsFaded] = useState(true);
+  const registered = useAppSelector(selectAuthRegistered);
 
   return (
-    <div className="text-end"
+    <div className={`text-end nav-${displayClass}`}
       onMouseEnter={() => setIsFaded(false)}
       onMouseLeave={() => {
         setIsExpanded(false);
@@ -26,17 +33,17 @@ const HamburgerNav = ({
       }}>
       
       { !isExpanded && (
-        <a className={`menu-icon d-inline-block mt-1 p-1 ${hide && isFaded && 'opacity-25'}`}
+        <button className={`btn btn-link menu-icon link-${displayClass} d-inline-block mt-1 p-1 ${hide && isFaded ? 'opacity-25':''}`}
           onClick={() => setIsExpanded(true)}>
           <i className="fas fa-bars fa-2x fa-fw"></i>
-        </a>
+        </button>
       )}
       { isExpanded && (
         <div>
-          <a className="menu-icon d-inline-block float-start mt-2 ms-1"
+          <button className={`btn btn-link menu-icon link-${displayClass} d-inline-block float-start mt-2 ms-1`}
             onClick={() => setIsExpanded(false)}>
             <i className="fas fa-times fa-2x fa-fw"></i>
-          </a>
+          </button>
           
           <div className="nav-list list-group float-end">
             <Link to="/" className={`list-group-item ${active === HamburgerNavOptions.home && 'active'}`}>

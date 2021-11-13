@@ -1,0 +1,15 @@
+.meet-the-team {
+  position: relative;
+}
+.meet-the-team hr {
+  background-color: var(--bs-white);
+  opacity: 1;
+  padding: 1px;
+  border-radius: 1px;
+}
+.meet-the-team span {
+  position: absolute;
+  top: 0;
+  margin-top: -4px;
+  background-color: var(--bs-primary);
+}

@@ -3,6 +3,6 @@ interface ImageInfo {
   
   title: string;
   url: string;
-  date: Date;
+  date: string;
 }
 export default ImageInfo;
