@@ -1,0 +1,17 @@
+.main-card {
+  max-height: 90vh;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: none;
+}
+
+.title-bar {
+  height: 64px;
+}
+.logo-container {
+  height: 64px;
+  width: fit-content;
+}
+.logo-container > img {
+  height: inherit;
+}

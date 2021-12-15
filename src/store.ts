@@ -1,9 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
+import activeJam from "./reducers/activeJam";
 import auth from "./reducers/auth";
-// ...
+import galleriesReducer from "./reducers/galleriesReducer";
+import imagesReducer from "./reducers/imagesReducer";
+import usersReducer from "./reducers/usersReducer";
 
 export const store = configureStore({
-  reducer: { auth }
+  reducer: {
+    authUser: auth.authUser,
+    authStatus: auth.authStatus,
+    adminStatus: auth.adminStatus,
+    activeJam,
+    imagesByUser: imagesReducer.imagesByUser,
+    imagesByGallery: imagesReducer.imagesByGallery,
+    galleriesMap: galleriesReducer.galleriesMap,
+    usersMap: usersReducer.userMap
+  }
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

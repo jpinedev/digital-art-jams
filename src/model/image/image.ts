@@ -1,8 +1,11 @@
-import GallerySubmission from "./gallerySubmission";
-import ImageInfo from "./imageInfo";
-import UserSubmission from "./userSubmission";
-
-interface Image extends ImageInfo, GallerySubmission, UserSubmission {
+interface Image {
+  id: string;
   
+  title: string;
+  url: string;
+  date: string;
+
+  username: string;
+  gallery: string;
 }
 export default Image;

@@ -3,28 +3,29 @@ a.menu-icon {
 }
 
 .nav-primary .list-group, .nav-primary .list-group-item {
-  border-color: var(--bs-secondary);
+  border-color: var(--bs-primary) !important;
   background-color: var(--bs-primary);
 }
 .nav-primary .list-group-item.active  {
-  color: var(--bs-secondary);
-  border-color: var(--bs-secondary);
+  color: var(--bs-primary);
+  border-color: var(--bs-primary) !important;
   background-color: var(--bs-white);
 }
-.nav-primary .list-group-item:not(.active):hover  {
+.nav-primary .list-group-item:not(.active):hover {
   color: var(--bs-white);
+  background-color: var(--bs-secondary);
 }
 
 .nav-secondary .list-group, .nav-secondary .list-group-item {
   color: var(--bs-white);
-  border-color: var(--bs-secondary);
+  border-color: var(--bs-secondary) !important;
   background-color: var(--bs-primary);
 }
 .nav-secondary .list-group-item.active  {
-  color: var(--bs-secondary);
-  border-color: var(--bs-secondary);
+  color: var(--bs-primary);
+  border-color: var(--bs-secondary) !important;
   background-color: var(--bs-white);
 }
-.nav-secondary .list-group-item:not(.active):hover  {
-  color: var(--bs-secondary);
+.nav-secondary .list-group-item:not(.active):hover {
+  background-color: var(--bs-secondary);
 }

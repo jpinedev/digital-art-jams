@@ -1,46 +1,61 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { imagesArray, imagesIdMap } from "../../reducers/mock-data/images";
-import GallerySidebar from "./Galleries/GallerySidebar";
+import { useHistory, useParams } from "react-router";
+import GallerySidebar from "../Gallery/GallerySidebar";
 import ImageDescriptor from "./ImageDescriptor";
 import ImageView from "./ImageView";
-
-import "./imageInspector.css";
 import HamburgerNav from "../Navigation/HamburgerNav";
+import GalleryReference from "../../model/gallery/galleryReference";
+import Image from "../../model/image/image";
+import imagesService from "../../service/imagesService";
+import { Submissions } from "../../reducers/imagesReducer";
 
 interface ImageInspectorParams {
-  id: string
+  imageId: string
 }
 
-const ImageInspector = () => {
-  const {id} = useParams<ImageInspectorParams>();
-  const [image, setImage] = useState(imagesArray[0]);
+interface ImageInspectorProps {
+  gallery: GalleryReference;
+  submissions: Submissions;
+}
 
-  const [gallery, showGallery] = useState(true);
-  const toggleGallery = () => showGallery(!gallery);
+const ImageInspector = ({gallery, submissions}: ImageInspectorProps) => {
+  const id = useParams<ImageInspectorParams>().imageId;
+  const [image, setImage] = useState<Image>({
+    id: '',
+    title: '',
+    url: '',
+    date: new Date().toISOString(),
+    username: '',
+    gallery: ''
+  });
+
+  const [showGallery, setShowGallery] = useState(true);
+  const toggleGallery = () => setShowGallery(!showGallery);
   const [description, showDescription] = useState(true);
   const toggleDescription = () => showDescription(!description);
 
+  const history = useHistory();
+
   useEffect(() => {
-    setImage(imagesIdMap[id]);
-  }, [id, setImage]);
+    imagesService.getImage(id)
+      .then(setImage)
+      .catch(() => history.replace(`/jam/${gallery.id}`));
+  }, [id, history, gallery.id]);
 
   return (
     <>
       <div className="row gx-0 w-100 h-100 position-fixed">
-        <div className={`border-end border-secondary col-xl-2 col-md-3 h-100 ${gallery ? 'd-md-block':''} d-none position-relative`}>
-          <GallerySidebar galleryReference={image.gallery} imageId={image.id}/>
+        <div className={`border-end border-secondary col-xl-2 col-md-3 h-100 ${showGallery ? 'd-md-block':''} d-none position-relative`}>
+          { !!image.id && <GallerySidebar gallery={gallery} submissions={submissions} imageId={image.id}/> }
         </div>
         <div className="col position-relative h-100 d-flex flex-column">
           <div className="flex-grow-1 position-relative">
-            <button className="d-md-block d-none position-absolute top-0 start-0 m-2 btn btn-primary btn-primary-opacity p-2 rounded-circle"
-              style={{zIndex: 5}}
+            <button className="d-md-block d-none position-absolute top-0 start-0 m-2 btn btn-primary btn-primary-opacity p-2 rounded-circle z-10"
               onClick={toggleGallery}>
-              <i className={`fas fa-chevron-${gallery ? 'left':'right'} fa-fw`}></i>
+              <i className={`fas fa-chevron-${showGallery ? 'left':'right'} fa-fw`}></i>
             </button>
-            <ImageView imageUrl={image.url}/>
-            <button className="position-absolute bottom-0 end-0 m-2 btn btn-primary btn-primary-opacity p-2 rounded-circle"
-              style={{zIndex: 5}}
+            { !!image.url && <ImageView imageUrl={image.url}/> }
+            <button className="position-absolute bottom-0 end-0 m-2 btn btn-primary btn-primary-opacity p-2 rounded-circle z-10"
               onClick={toggleDescription}>
               <i className={`fas fa-chevron-${description ? 'down':'up'} fa-fw`}></i>
             </button>
@@ -49,10 +64,10 @@ const ImageInspector = () => {
           { description &&
             <>
               <div className="">
-                <ImageDescriptor image={image}/>
+                { !!image.id && <ImageDescriptor gallery={gallery} image={image}/> }
               </div>
               <div className="d-md-none d-block position-relative">
-                <GallerySidebar galleryReference={image.gallery} imageId={image.id} displayHorizontal={true}/>
+                {!!gallery && <GallerySidebar gallery={gallery} submissions={submissions} imageId={image.id} displayHorizontal={true}/>}
               </div>
             </>
           }

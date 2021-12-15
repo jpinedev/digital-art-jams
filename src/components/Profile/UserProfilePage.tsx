@@ -5,23 +5,22 @@ import EditProfile from "./EditProfile";
 import ProfileComponent from "./ProfileComponent";
 
 const UserProfilePage = () => {
-  const auth = useAppSelector(state => state.auth);
-
+  const auth = useAppSelector(state => state.authStatus);
+  const user = useAppSelector(state => state.authUser);
+  
   return (
     <>
-      { auth.registered &&
-        <Switch>
-          <Route path={'/profile'} exact={true}>
-            <ProfileComponent user={auth} canEdit={true} />
-          </Route>
-          <Route path={'/profile/edit'} exact={true}>
-            <EditProfile />
-          </Route>
-        </Switch>
-      }
-      { !auth.registered &&
+      { !auth &&
         <Redirect to={'/login'} />
       }
+      <Switch>
+        <Route path={'/profile'} exact={true}>
+          <ProfileComponent user={user} canEdit={true} />
+        </Route>
+        <Route path={'/profile/edit'} exact={true}>
+          <EditProfile />
+        </Route>
+      </Switch>
     </>
   );
 };

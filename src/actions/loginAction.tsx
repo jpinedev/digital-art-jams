@@ -1,4 +1,4 @@
-import { usersIds, usersMap } from "../reducers/mock-data/users";
+import authService from "../service/authService";
 import { AppDispatch } from "../store";
 
 export interface Login {
@@ -9,6 +9,7 @@ export interface Login {
 export interface LoginValidation {
   username: string[];
   password: string[];
+  form: string[];
 };
 
 export const validateLoginUsername = (username: string): string[] => {
@@ -27,14 +28,13 @@ export const validateLoginPassword = (password: string): string[] => {
 export const validateLogin = ({ username, password }: Login): LoginValidation => {
   return {
     username: validateLoginUsername(username),
-    password: validateLoginPassword(password)
+    password: validateLoginPassword(password),
+    form: []
   };
 };
 
-export const attemptLogin = (dispatch: AppDispatch, login: Login) => {
-
-  // mock login
-  return new Promise((resolve, reject) => {
+export const attemptLogin = (dispatch: AppDispatch, login: Login) =>
+  new Promise((resolve, reject) => {
     const validation = validateLogin(login);
 
     if (validation.username.length > 0 || validation.password.length > 0) {
@@ -42,20 +42,27 @@ export const attemptLogin = (dispatch: AppDispatch, login: Login) => {
       return;
     }
     
-    setTimeout(() => {
-      if (usersIds.findIndex(userId => userId === login.username) === -1)
-        reject({ username: ['Incorrect username or password.'], password: [] });
-      else resolve(usersMap[login.username]);
-    }, 300);
-  }).then(user => {
-    dispatch({
-      type: 'login',
-      user
+    resolve(login);
+  }).then(authService.login)
+    .then(res => {
+      if (res.status === 200) return res.json();
+      return Promise.reject({ username: [], password: [], form: ['Incorrect username or password.'] });
+    })
+    .then(user => {
+      dispatch({
+        type: 'login',
+        user
+      });
     });
-  });
-};
+
+export const logout = (dispatch: AppDispatch) => 
+  authService.logout()
+    .then(() => dispatch({
+      type: 'logout'
+    }));
 
 const loginAction = {
-  attemptLogin
+  attemptLogin,
+  logout
 };
 export default loginAction;

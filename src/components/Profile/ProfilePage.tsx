@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { UnregisteredUser } from "../../model/user/user";
-import { usersMap } from "../../reducers/mock-data/users";
+import { useHistory, useParams } from "react-router";
+import usersAction from "../../actions/usersAction";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import User from "../../model/user/user";
 import ProfileComponent from "./ProfileComponent";
 
 interface ProfileParams {
-  id: string
+  username: string
 }
 
 const ProfilePage = () => {
-  const {id} = useParams<ProfileParams>();
-  const [user, setUser] = useState(UnregisteredUser);
+  const {username} = useParams<ProfileParams>();
+
+  const dispatch = useAppDispatch();
+  const usersMap = useAppSelector(state => state.usersMap);
+  const [user, setUser] = useState<User>();
+
+  const history = useHistory();
 
   useEffect(() => {
-    setUser(usersMap[id]);
-  }, [id, user, setUser]);
+    if (!!usersMap[username])
+      setUser(usersMap[username]);
+    else 
+      usersAction.getUser(dispatch, username)
+        .catch(() => history.replace(`/profile`));
+  }, [username, dispatch, usersMap, history]);
   
-  return (
-    <ProfileComponent user={user}/>
-  );
+  return !!user ? <ProfileComponent user={user}/> : (<></>);
 };
 export default ProfilePage;

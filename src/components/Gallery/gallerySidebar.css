@@ -1,0 +1,22 @@
+.fix-height {
+  height: 15vh;
+}
+
+.border {
+  border-width: 4px !important;
+}
+.border.active-border {
+  border-width: 8px !important;
+}
+
+.d-vertical img {
+  width: 100%;
+}
+
+.d-horizontal {
+  margin-left: 1vh;
+  padding-bottom: 0.5vh;
+}
+.d-horizontal img {
+  height: 100%;
+}

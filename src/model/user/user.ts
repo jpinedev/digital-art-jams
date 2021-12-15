@@ -1,24 +1,22 @@
-import UserSubmission from "../image/userSubmission";
 import UserProfile from "./userProfile";
 import UserReference from "./userReference";
 
 interface User extends UserReference, UserProfile {
-  registered: boolean;
+  _id: string;
   joinDate: string;
-
-  submissions: UserSubmission[];
+  submissions: number;
 }
 export default User;
 
 export const UnregisteredUser: User = {
-  registered: false,
+  _id: "UNREGISTERED",
   joinDate: new Date(Date.UTC(0,0)).toISOString(),
-  submissions: [],
-  id: "UNREGISTERED",
+  username: "UNREGISTERED",
   displayName: "Unregistered User",
   profileImg: "",
   bio: "",
   admin: false,
   hideSubmissionsFromDefaultUser: false,
-  hideBioFromDefaultUser: false
+  hideBioFromDefaultUser: false,
+  submissions: 0
 };

@@ -1,0 +1,17 @@
+#searchbar {
+  border-color: rgba(var(--bs-primary-rgb), 0.25);
+}
+#searchbar:focus {
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-secondary-rgb), .5) !important;
+}
+
+.card {
+  border-color: rgba(var(--bs-primary-rgb), 0.25);
+}
+.list-group-item {
+  color: var(--bs-secondary);
+  border-color: rgba(var(--bs-primary-rgb), 0.25);
+}
+.list-group-item.link-secondary:hover {
+  background-color: rgba(var(--bs-primary-rgb), 0.5);
+}

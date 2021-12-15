@@ -26,7 +26,7 @@ const Profile = () => {
           <Route path={['/login']} exact={true} component={LoginComponent}/>
           <Route path={['/register']} exact={true} component={RegisterComponent}/>
           <Route path={['/profile', '/profile/edit']} exact={true} component={UserProfilePage}/>
-          <Route path={['/users/profile/:id']} component={ProfilePage}/>
+          <Route path={['/users/profile/:username']} component={ProfilePage}/>
         </Switch>
       </div>
     </div>

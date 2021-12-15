@@ -1,3 +1,11 @@
+.min-h-100 {
+  min-height: 100%;
+}
+.vertical-center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .meet-the-team {
   position: relative;
 }

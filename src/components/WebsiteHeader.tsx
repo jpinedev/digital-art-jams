@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import HamburgerNav, { HamburgerNavOptions } from "./Navigation/HamburgerNav";
 
 interface WebsiteHeaderProps {
@@ -12,19 +13,21 @@ const WebsiteHeader = ({
 }: WebsiteHeaderProps) => {
   return (
     <>
-      <div className="position-absolute w-100 p-2" style={{zIndex: 10}}>
+      <div className="position-absolute w-100 p-2 top-0 start-0">
         <div className="float-start">
-          <h1>
-            <i className="fas fa-pencil-alt fa-fw"></i>
-            DAJams
-          </h1>
+          <Link to="/" className="text-decoration-none text-white z-10">
+            <h1>
+                <i className="fas fa-pencil-alt fa-fw"></i>
+                DAJams
+            </h1>
+          </Link>
         </div>
         <div className="float-end">
           <HamburgerNav active={activeLink} />
         </div>
       </div>
       { pushContent &&
-        <h1 className="p-2">
+        <h1 className="p-2 invisible">
           <i className="fas fa-pencil-alt fa-fw"></i>
           DAJams
         </h1>

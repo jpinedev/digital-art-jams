@@ -1,5 +1,5 @@
 interface UserReference {
-  id: string;
+  username: string;
   displayName: string;
   profileImg: string;
   

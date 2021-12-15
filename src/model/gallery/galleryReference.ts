@@ -3,5 +3,6 @@ interface GalleryReference {
   logo: string;
   title: string;
   description: string;
+  submissionCount: number;
 }
 export default GalleryReference;

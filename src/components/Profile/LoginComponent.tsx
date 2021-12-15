@@ -11,9 +11,10 @@ const LoginComponent = () => {
   });
   const [loginError, setLoginError] = useState<LoginValidation>({
     username: [],
-    password: []
+    password: [],
+    form: []
   });
-  const loggedIn = useAppSelector(state => state.auth.registered);
+  const loggedIn = useAppSelector(state => state.authStatus);
   const dispatch = useAppDispatch();
 
   const updateUsername = (event: ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +24,8 @@ const LoginComponent = () => {
     });
     setLoginError({
       ...loginError,
-      username: validateLoginUsername(event.target.value)
+      username: validateLoginUsername(event.target.value),
+      form: []
     });
   };
   const updatePassword = (event: ChangeEvent<HTMLInputElement>) => {
@@ -33,14 +35,15 @@ const LoginComponent = () => {
     });
     setLoginError({
       ...loginError,
-      password: validateLoginPassword(event.target.value)
+      password: validateLoginPassword(event.target.value),
+      form: []
     });
   }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (loginError.username.length !== 0 || loginError.password.length !== 0)
+    if (loginError.username?.length !== 0 || loginError.password?.length !== 0 || loginError.form?.length !== 0)
       return;
 
     attemptLogin();
@@ -59,29 +62,34 @@ const LoginComponent = () => {
           <div className="mb-3">
             <label htmlFor="username" className="form-label">Username</label>
             <input type="text" id="username"
-              className={`form-control ${loginError.username.length > 0 ? 'is-invalid':0}`}
+              className={`form-control ${loginError.username?.length > 0 ? 'is-invalid':0}`}
               autoComplete="username"
               value={form.username}
               onChange={updateUsername} />
             <div className="invalid-feedback">
-              { loginError.username.map((error, index) => <div key={index}>{error}</div>) }
+              { loginError.username?.map((error, index) => <div key={index}>{error}</div>) }
             </div>
           </div>
           <div className="mb-3">
             <label htmlFor="password" className="form-label">Password</label>
             <input type="password" id="password"
-              className={`form-control ${loginError.password.length > 0 ? 'is-invalid':0}`}
+              className={`form-control ${loginError.password?.length > 0 ? 'is-invalid':0}`}
               autoComplete="current-password"
               value={form.password}
               onChange={updatePassword} />
             <div className="invalid-feedback">
-              { loginError.password.map((error, index) => <div key={index}>{error}</div>) }
+              { loginError.password?.map((error, index) => <div key={index}>{error}</div>) }
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="invalid-feedback d-block">
+              { loginError.form?.map((error, index) => <div key={index}>{error}</div>) }
             </div>
           </div>
           <div className="d-flex flex-column pt-3">
             <button className="btn btn-primary flex-grow-1 mb-2"
               type="submit"
-              disabled={loginError.username.length > 0 || loginError.password.length > 0}>Login</button>
+              disabled={loginError.username?.length > 0 || loginError.password?.length > 0 || loginError.form?.length > 0}>Login</button>
             <hr />
             <div className="text-muted text-center mb-2">Not a member yet?</div>
             <Link to={'/register'} className="btn btn-secondary flex-grow-1 ">Register</Link>
