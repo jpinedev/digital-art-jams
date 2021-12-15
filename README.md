@@ -8,45 +8,45 @@ This website will record all previous, current, and future challenges. For each 
 # Website Structure
 
 Landing Page
-- Information about club and website
-- Accounts of Club Administrators
-- Preview images of last Challenge (maybe ?)
-- Current challenge (if any)
-  - Upcoming challenge (else)
+- [x] Information about website
+- [x] Accounts of Admins
+- [x] Preview images of last Challenge (maybe ?)
+- [x] Link to current challenge (if any)
+  - [x] Link to challenge list (else)
 
 Challenges
-- List of past challenges
-- Current challenge (if any)
-  - Upcoming challenge (else)
-- Future challenges (maybe in calendar form)
+[ ] List of past challenges
+[ ] Current challenge (if any)
+  [ ] Upcoming challenge (else)
+[ ] Future challenges (maybe in calendar form)
 
 Challenge Page
-- Display
-  - Theme
-  - Description
-  - Image (maybe ?) 
-  - Hashtags (maybe ?) 
-- If not a future challenge
-  - Gallery of submissions
+- [x] Display
+  - [x] Theme
+  - [x] Description
+  - [x] Image (maybe ?) 
+  - [ ] Hashtags (maybe ?) 
+- [x] If not a future challenge
+  - [x] Gallery of submissions
 
 Browse Past Challenges
-- List of past challenges with preview images
-- Search by challenge name
-- Search by hashtag (maybe ?)
-- Search by participating club member
-- Search by date
-- Filter by school year
+- [x] List of past challenges with preview images
+- [x] Search by challenge name
+- [ ] Search by hashtag (maybe ?)
+- [ ] Search by participating club member
+- [ ] Search by date
+- [ ] Filter by school year
 
 Create/Edit Challenges (ADMIN ONLY)
-- Create or edit current or future challenge
-  - Theme
-  - Description
-  - Image (maybe ?) 
-  - Hashtags (maybe ?) 
+- [x] Create or edit current or future challenge
+  - [x] Theme
+  - [x] Description
+  - [x] Image (maybe ?) 
+  - [ ] Hashtags (maybe ?) 
 
 Profile Page
-- Public biographical user information
-- Gallery of Submissions
-- Club member status (member, admin)
-- Users can edit their own profile
-- Admins can promote members to Admin status
+- [x] Public biographical user information
+- [x] Gallery of Submissions
+- [x] ~~Club member status (member, admin)~~ Admin Status
+- [x] Users can edit their own profile
+- [x] Admins can promote members to Admin status
