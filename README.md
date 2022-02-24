@@ -15,10 +15,10 @@ Landing Page
   - [x] Link to challenge list (else)
 
 Challenges
-[ ] List of past challenges
-[ ] Current challenge (if any)
-  [ ] Upcoming challenge (else)
-[ ] Future challenges (maybe in calendar form)
+- [ ] List of past challenges
+- [ ] Current challenge (if any)
+  - [ ] Upcoming challenge (else)
+- [ ] Future challenges (maybe in calendar form)
 
 Challenge Page
 - [x] Display
